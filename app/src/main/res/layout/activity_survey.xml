@@ -11,34 +11,35 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:popupTheme="@style/Theme.AppCompat.DayNight.NoActionBar"
-        tools:ignore="MissingConstraints">
+        >
         <TextView
-            android:id="@+id/txt_refresh"
+            android:id="@+id/tv_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:padding="5dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/ic_refresh_white"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
-            android:onClick="onRefreshList"
+            android:onClick="onRefreshSurveyList"
             />
         <TextView
-            android:id="@+id/txt_heading"
+            android:id="@+id/tv_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Surveys"
+            android:text="@string/surveys"
+            android:textAllCaps="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF" />
         <TextView
-            android:id="@+id/txt_menu"
+            android:id="@+id/tv_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:padding="5dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:background="@drawable/ic_menu_white"
@@ -66,22 +67,24 @@
             android:id="@+id/ll_slider_dots"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:layout_width="15dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
 
             android:visibility="visible"/>
 
 
         <Button
-            android:id="@+id/btn_Take_Survey"
+            android:id="@+id/btn_take_survey"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/rounedbutton"
-            android:text="Take the survey"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/round_button"
+            android:text="@string/take_the_survey"
+            android:textAllCaps="false"
             android:padding="5dp"
             android:visibility="gone"
             android:textColor="@color/white" />
@@ -90,8 +93,8 @@
 
     <ProgressBar
         android:id="@+id/progressBar"
-        android:layout_width="1in"
-        android:layout_height="1in"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_centerInParent="true"/>
 
 

@@ -1,9 +1,9 @@
 package com.ki.surveys.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +37,7 @@ public class SurveyActivity extends AppCompatActivity {
     ProgressBar progressBar;
     private int dotsCount;
     private ImageView[] dots;
-    Button btn;
+    Button btnTakeTheSurvey;
     int currentPage = 0;
     Timer timer;
     final long DELAY_MS = 1000;
@@ -58,9 +58,11 @@ public class SurveyActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         customViewPager = findViewById(R.id.view_pager);
         linearLayout = findViewById(R.id.ll_slider_dots);
-        btn=findViewById(R.id.btn_Take_Survey);
+        btnTakeTheSurvey =findViewById(R.id.btn_take_survey);
         initTokenData();
-
+        btnTakeTheSurvey.setOnClickListener((View v) -> {
+            startActivity(new Intent(SurveyActivity.this,TakeTheSurveyActivity.class));
+        });
     }
 
     private void initTokenData() {
@@ -77,10 +79,9 @@ public class SurveyActivity extends AppCompatActivity {
         surveyViewModel.init();
         surveyViewModel.getSurveyRepository().observe(this, surveyResponse -> {
             List<Survey> surveyList = surveyResponse;
-            Log.d("surveyList.size",""+surveyList.size());
             surveyArrayList.addAll(surveyList);
             progressBar.setVisibility(View.GONE);
-            btn.setVisibility(View.VISIBLE);
+            btnTakeTheSurvey.setVisibility(View.VISIBLE);
             initView(surveyArrayList);
 
         });
@@ -157,7 +158,7 @@ public class SurveyActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onRefreshList(View view) {
+    public void onRefreshSurveyList(View view) {
         Toast.makeText(getApplicationContext(),"Refresh clicked",Toast.LENGTH_LONG).show();
         if(isDataLoaded){
             reloadSurveyList();
